@@ -224,4 +224,5 @@ Final insurance pricing decisions are made solely by licensed insurers under app
 
 Benuel Omanga
 Master’s in Data Science & Business Analytics
+
 Focus: *Explainable ML, Applied Analytics, Social Corporate Responsibility*
