@@ -1,5 +1,7 @@
 **Insurance Cost Estimator**
+
 An Explainable Machine Learning Application for Insurance Cost Awareness
+
 1. **Executive Summary**
 
 The Insurance Cost Estimator is an explainable machine learning application designed to improve public understanding of health insurance cost drivers.
