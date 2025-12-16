@@ -1,43 +1,67 @@
-Insurance Cost Estimator (Explainable ML Project)
-Project Overview
+Insurance Cost Estimator
+An Explainable Machine Learning Application for Insurance Cost Awareness
+1. Project Overview
 
-This project is an explainable insurance cost estimation tool designed to improve public understanding of what influences health insurance costs. The application provides indicative estimates and clear explanations of key cost drivers using machine learning, with a strong focus on transparency, ethics, and accessibility.
+The Insurance Cost Estimator is an explainable machine learning application designed to help individuals understand what factors influence health insurance costs.
 
-The tool is built to be mobile-friendly, allowing everyday users to access it from a normal phone browser without technical knowledge.
+Rather than producing insurance quotes, the tool provides indicative cost estimates and clear, human-readable explanations of the main drivers behind those estimates.
 
-⚠️ This project does not provide insurance quotes or pricing. All outputs are estimates for awareness and educational purposes only.
+The application is:
 
-Problem Motivation
+Phone-first and accessible via a standard web browser
 
-Many individuals struggle to understand why health insurance costs differ widely between people with similar circumstances. Insurance pricing models are often complex and opaque, leaving users unable to identify:
+Built with responsible AI principles
 
-What factors increase their insurance costs
+Designed for public awareness, not underwriting or pricing
 
-Which factors help keep costs lower
+⚠️ All outputs are estimates for educational and awareness purposes only.
+Final insurance pricing is determined by licensed insurers in line with regulatory guidelines.
 
-What aspects they can realistically influence
+2. Problem Context & Motivation
 
-This project addresses that gap by using data analytics and explainable machine learning to surface clear, data-driven insights in simple language.
+Insurance pricing is often perceived as opaque and difficult to understand. Many individuals are unable to answer basic questions such as:
 
-Key Questions Addressed
+Why does my insurance cost more than someone else’s?
 
-How much might insurance cost based on a person’s profile?
+Which factors matter the most?
 
-Which factors influence insurance costs the most?
+What, if anything, can I change to reduce my cost?
 
-Which changes are associated with lower or higher costs?
+This lack of transparency creates information asymmetry between insurers and consumers.
 
-Dataset
+This project addresses that gap by combining:
+
+Exploratory data analysis
+
+Interpretable machine learning
+
+A simple, mobile-friendly interface
+
+The goal is understanding, not prediction alone.
+
+3. Key Questions Addressed
+
+How much might insurance cost based on a basic personal profile?
+
+Which factors have the strongest influence on insurance costs?
+
+Which factors contribute less than people commonly assume?
+
+How can insights be communicated clearly to non-technical users?
+
+4. Dataset
 
 Source: Public open-source insurance dataset (Kaggle)
 
-Records: 1,338
+Records: 1,338 individuals
 
-Features used:
+Data characteristics: Clean, no missing values in core features
+
+Features Used
 
 Age
 
-BMI (calculated from height and weight)
+Body Mass Index (BMI) (calculated from height and weight)
 
 Smoking status
 
@@ -47,105 +71,122 @@ Sex (internal use only)
 
 Region (internal use only)
 
-No personal identifiers, medical records, or sensitive data are used.
+No personal identifiers, medical records, income data, or sensitive attributes are included.
 
-Methodology
-Phase 1 – Problem Framing
+5. Methodology
+5.1 Problem Framing
 
-Defined the real-world problem, target users, ethical boundaries, and regulatory considerations.
+Defined:
 
-Phase 2 – Exploratory Data Analysis (EDA)
+Target users (general public)
 
-Key findings:
+Ethical boundaries
 
-Insurance costs are highly skewed: most individuals pay moderate amounts, while a small group accounts for very high costs.
+Regulatory awareness
 
-Smoking is the strongest driver of increased insurance costs.
+Explainability requirements
 
-BMI shows a strong association with higher costs and acts as a health-risk proxy.
+5.2 Exploratory Data Analysis (EDA)
 
-Age increases costs gradually but does not explain large differences on its own.
+Key findings from EDA include:
 
-Number of dependants has a moderate effect.
+Insurance costs are highly right-skewed
 
-Region and gender have minimal influence.
+Most individuals pay moderate costs
 
-Phase 3 – Modeling
+A small subset accounts for extremely high costs
 
-Baseline Model: Linear Regression (for transparency)
+Lifestyle and health-related factors dominate cost variation
 
-Primary Model: Random Forest Regressor (for improved accuracy)
+EDA directly informed feature selection and modeling decisions.
 
-Performance (Random Forest):
+5.3 Modeling Approach
 
-MAE ≈ 2,530
+Two models were trained and evaluated:
 
-R² ≈ 0.86
+Model	Purpose
+Linear Regression	Baseline & interpretability
+Random Forest Regressor	Primary prediction model
 
-The final system balances predictive performance with interpretability, which is critical in regulated domains such as insurance.
+Final model selection: Random Forest Regressor
+Chosen for its ability to capture non-linear relationships while retaining interpretability via feature importance.
 
-Key Insights (Model + EDA)
+Model Performance (Random Forest)
 
-Lifestyle-related factors dominate insurance cost estimation more than demographic traits.
+MAE: ~2,530
 
-Smoking alone explains a large proportion of cost variation across individuals.
+R²: ~0.86
 
-Maintaining a healthy BMI is strongly associated with lower estimated insurance costs.
+This indicates strong explanatory power without overfitting.
 
-Age contributes steadily but is not a dominant cost driver by itself.
+6. Explainability & Key Insights
 
-Region and gender contribute minimally, reducing the risk of demographic bias.
+Feature importance analysis reveals:
 
-These insights are explicitly translated into user-facing explanations within the application.
+Primary Cost Drivers
 
-Impact
-Social & Practical Impact
+Smoking status – strongest contributor to higher costs
 
-Improves insurance literacy among everyday users.
+BMI – strong health-risk proxy
 
-Helps individuals understand why their insurance costs may be higher or lower.
+Age – gradual, consistent increase
 
-Encourages informed lifestyle and financial planning decisions.
+Secondary / Minor Factors
 
-Reduces information asymmetry between insurers and the public.
+Number of dependants – moderate effect
 
-Professional & Technical Impact
+Region & sex – minimal influence
 
-Demonstrates end-to-end data science skills: EDA → modeling → explainability → deployment.
+Key Insight
 
-Shows responsible AI practices in a regulated domain.
+Lifestyle and health-related factors explain far more cost variation than demographic attributes. This significantly reduces the risk of demographic bias.
 
-Highlights the ability to translate complex analytics into simple, actionable insights.
+7. Application Design
+User Experience
 
-Strong portfolio example for roles in Data Science, Business Analytics, Risk Analytics, and FinTech.
+Simple, vertical layout suitable for mobile phones
 
-Explainability & Ethics
-
-Feature importance is explicitly analyzed and documented.
-
-Lifestyle and health proxies dominate predictions, not sensitive demographics.
-
-No income, occupation, or medical history is used.
-
-Outputs are framed as estimates, never guarantees.
-
-This design aligns with responsible AI principles and regulatory awareness.
-
-Application Features
-
-Phone-first, browser-based interface
+Minimal inputs
 
 Automatic BMI calculation
 
-Clear explanations of what increases or reduces estimated cost
+Clear explanations alongside estimates
 
-Estimated cost range to reduce false certainty
+Output Design
 
-Regulatory and ethical disclaimer always visible
+Estimated annual cost (KES)
 
-Technology Stack
+Estimated range to reduce false certainty
 
-Python
+Plain-language explanations of key influencing factors
+
+The application never exposes:
+
+Model internals
+
+Raw feature weights
+
+Technical jargon
+
+8. Responsible AI & Ethics
+
+This project follows responsible AI practices:
+
+No sensitive personal data used
+
+No income or occupation features
+
+No medical diagnoses
+
+Outputs framed strictly as estimates
+
+Clear regulatory disclaimer always visible
+
+The system prioritizes explainability over automation.
+
+9. Technology Stack
+
+Python 3.11
 
 pandas, numpy
 
@@ -153,22 +194,42 @@ scikit-learn
 
 joblib
 
+matplotlib
+
 Streamlit
 
-How to Run Locally
+10. How to Run Locally
 pip install -r requirements.txt
 streamlit run app.py
 
-Deployment Status
+11. Deployment Status
 
-🚀 Deployed and accessible via browser (desktop and mobile)
+🚀 Deployed and accessible via browser (desktop & mobile)
 
-Disclaimer
+12. Impact
+Social Impact
 
-This application provides indicative estimates only for awareness and educational purposes. Final insurance pricing is determined by licensed insurers in accordance with applicable regulatory guidelines. This tool does not replace professional insurance advice or underwriting processes.
+Improves insurance literacy
 
-Author
+Encourages informed decision-making
+
+Reduces confusion around insurance pricing
+
+Professional Impact
+
+Demonstrates end-to-end data science workflow
+
+Shows ethical ML in a regulated domain
+
+Highlights ability to translate analytics into real-world tools
+
+13. Disclaimer
+
+This application provides indicative estimates only for awareness and educational purposes.
+Final insurance pricing is determined exclusively by licensed insurers under applicable regulatory frameworks.
+
+14. Author
 
 Benuel Omanga
-Data Science & Business Analytics
-Focused on explainable analytics, ethical ML, and real-world impact
+Master’s in Data Science & Business Analytics
+Focus areas: Explainable ML, Responsible AI, Applied Analytics
